@@ -1,7 +1,7 @@
-# Awesome Project Build with TypeORM
+# Graphql Authentication
 
-Steps to run this project:
+Tech Stack
 
-1. Run `npm i` command
-2. Run `docker-compose up` command
-3. Run `npm start` command
+- Graphql Yoga
+- TypeORM
+- Jest
