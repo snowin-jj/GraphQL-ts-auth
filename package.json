@@ -27,13 +27,14 @@
     "pg": "^8.4.0",
     "reflect-metadata": "^0.1.13",
     "remove": "^0.1.5",
-    "typeorm": "0.3.17"
+    "typeorm": "0.3.17",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "concurrently \"nodemon src/index.ts\" \"pnpm generate --watch\"",
+    "test": "POSTGRES_DB=test-graphqlAuthDB NODE_ENV=test jest --detectOpenHandles",
     "typeorm": "typeorm-ts-node-commonjs",
-    "generate": "graphql-codegen",
-    "test": "POSTGRES_DB=test-graphqlAuthDB NODE_ENV=test jest --detectOpenHandles"
+    "generate": "graphql-codegen"
   }
 }

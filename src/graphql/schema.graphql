@@ -5,6 +5,16 @@ type User {
   email: String!
 }
 
+type Error {
+  path: String!
+  message: String!
+}
+
+type RegisterResponse {
+  user: User
+  errors: [Error]
+}
+
 # Queries
 
 type Query {
@@ -14,5 +24,9 @@ type Query {
 # Mutations
 
 type Mutation {
-  register(name: String!, email: String!, password: String!): User
+  registerUser(
+    name: String!
+    email: String!
+    password: String!
+  ): RegisterResponse
 }

@@ -1,5 +1,5 @@
 import { Resolvers } from '../../generated/graphql';
-import { register } from './user';
+import { registerUser } from './user';
 
 const resolvers: Resolvers = {
   Query: {
@@ -7,7 +7,7 @@ const resolvers: Resolvers = {
   },
 
   Mutation: {
-    register,
+    registerUser,
   },
 };
 
