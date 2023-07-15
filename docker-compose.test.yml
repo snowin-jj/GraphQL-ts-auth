@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  test-db:
+    extends:
+      file: docker-compose.yml
+      service: db
+    environment:
+      POSTGRES_DB: 'test-graphqlAuthDB'
+
+  test-db-adminer:
+    image: adminer
+    depends_on:
+      - test-db
+    restart: always
+    ports:
+      - 8080:8080
