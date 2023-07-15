@@ -1,7 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { createServer } from 'node:http';
-import { createYoga } from 'graphql-yoga';
-import { createSchema } from 'graphql-yoga';
+import { createYoga, createSchema, YogaInitialContext } from 'graphql-yoga';
 
 import resolvers from './graphql/resolvers';
 

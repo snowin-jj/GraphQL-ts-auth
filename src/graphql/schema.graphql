@@ -10,7 +10,7 @@ type Error {
   message: String!
 }
 
-type RegisterResponse {
+type AuthResponse {
   user: User
   errors: [Error]
 }
@@ -18,15 +18,14 @@ type RegisterResponse {
 # Queries
 
 type Query {
-  hello(name: String!): String
+  getUsers: [User]!
+  getUser(id: String!): User
 }
 
 # Mutations
 
 type Mutation {
-  registerUser(
-    name: String!
-    email: String!
-    password: String!
-  ): RegisterResponse
+  registerUser(name: String!, email: String!, password: String!): AuthResponse
+
+  loginUser(email: String!, password: String!): AuthResponse
 }

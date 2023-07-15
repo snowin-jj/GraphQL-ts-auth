@@ -9,6 +9,7 @@ import {
 	duplicateEmail,
 	emailNotLongEnough,
 	invalidEmail,
+	invalidLogin,
 	nameNotLongEnough,
 	passwordNotLongEnough,
 } from '../../../utils/error';
@@ -34,6 +35,21 @@ mutation {
 			message
 		}
   }
+}
+`;
+
+const loginMutation = (email: string, password: string) => `#graphql
+mutation {
+	loginUser(email: "${email}", password: "${password}") {
+		user {
+			name
+			email
+		}
+		errors {
+			path
+			message
+		}
+	}
 }
 `;
 
@@ -149,6 +165,36 @@ describe('Create new user', () => {
 					{
 						path: 'password',
 						message: passwordNotLongEnough,
+					},
+				],
+			},
+		});
+	});
+});
+
+describe('Login user', () => {
+	it('Should sign in the user', async () => {
+		const res = await request(host, loginMutation(email, password));
+		expect(res).toEqual({
+			loginUser: {
+				user: {
+					name,
+					email,
+				},
+				errors: null,
+			},
+		});
+	});
+
+	it('Should return an error if user pass invalid credentails', async () => {
+		const res = await request(host, loginMutation(email, '8278'));
+		expect(res).toEqual({
+			loginUser: {
+				user: null,
+				errors: [
+					{
+						path: 'login',
+						message: invalidLogin,
 					},
 				],
 			},

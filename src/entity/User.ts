@@ -15,6 +15,9 @@ export class User {
   @Column('text')
   password: string;
 
+  @Column('boolean', { default: false })
+  isVerified: boolean;
+
   @BeforeInsert()
   async hashPassword() {
     this.password = await hash(this.password, 10);

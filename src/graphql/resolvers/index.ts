@@ -1,13 +1,15 @@
 import { Resolvers } from '../../generated/graphql';
-import { registerUser } from './user';
+import { registerUser, getUsers, getUser, loginUser } from './user';
 
 const resolvers: Resolvers = {
   Query: {
-    hello: (_, { name }) => `Hello, ${name}`,
+    getUsers,
+    getUser,
   },
 
   Mutation: {
     registerUser,
+    loginUser,
   },
 };
 
